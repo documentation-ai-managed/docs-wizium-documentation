@@ -1,0 +1,79 @@
+{
+  "name": "WIZIUM Documentation",
+  "initialRoute": "introduction",
+  "colors": {
+    "light": {
+      "brand": "#3B82F6",
+      "heading": "#1a1a1a",
+      "text": "#374151"
+    },
+    "dark": {
+      "brand": "#60A5FA",
+      "heading": "#f2f2f2",
+      "text": "#c1c1c1"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "icon": "book",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "rocket",
+            "pages": [
+              {
+                "title": "Introduction",
+                "path": "introduction",
+                "icon": "star"
+              },
+              {
+                "title": "Quick Start",
+                "path": "quick-start",
+                "icon": "zap"
+              }
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "icon": "lightbulb",
+            "pages": [
+              {
+                "title": "Managing Projects",
+                "path": "managing-projects",
+                "icon": "folder"
+              },
+              {
+                "title": "API Integration",
+                "path": "api-integration",
+                "icon": "code"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "icon": "terminal",
+        "groups": [
+          {
+            "group": "Endpoints",
+            "openapi": "openapi.yaml"
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "clock",
+        "pages": [
+          {
+            "title": "Release History",
+            "path": "changelog",
+            "icon": "history"
+          }
+        ]
+      }
+    ]
+  }
+}

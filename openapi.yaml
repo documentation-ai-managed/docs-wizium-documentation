@@ -1,0 +1,177 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: WIZIUM API
+  license:
+    name: MIT
+servers:
+  - url: https://api.wizium.com/v1
+paths:
+  /projects:
+    get:
+      summary: List all projects
+      operationId: listProjects
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: An paged array of projects
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a project
+      operationId: createProjects
+      responses:
+        201:
+          description: Project creation successful
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /projects/{projectId}:
+    get:
+      summary: Info for a specific project
+      operationId: showProjectById
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: The id of the project to retrieve
+          schema:
+            type: string
+      responses:
+        200:
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update a project
+      operationId: updateProject
+      responses:
+        200:
+          description: Project updated successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /projects/{projectId}/pages:
+    get:
+      summary: List pages in a project
+      operationId: listProjectPages
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: The id of the project
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: How many pages to return (max 50)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: Array of pages in the project
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pages'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a page in a project
+      operationId: createProjectPage
+      responses:
+        201:
+          description: Page created successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Project:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+          enum: [public, private]
+    Projects:
+      type: array
+      items:
+        $ref: '#/components/schemas/Project'
+    Page:
+      required:
+        - id
+        - title
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        projectId:
+          type: string
+    Pages:
+      type: array
+      items:
+        $ref: '#/components/schemas/Page'
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

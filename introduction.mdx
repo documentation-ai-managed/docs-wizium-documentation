@@ -1,0 +1,109 @@
+---
+title: Introduction
+description: Overview of WIZIUM Documentation and its core capabilities
+---
+
+## Welcome to WIZIUM
+
+WIZIUM Documentation provides a comprehensive platform for organizing and managing all your project documentation in one centralized space. You access a powerful suite of tools that streamline documentation workflows and enhance team collaboration.
+
+<Columns cols={3}>
+  <Card title="Quick Start" icon="zap" href="/docs/quick-start">
+    Get up and running with WIZIUM in under 10 minutes. Learn the basics of setting up your documentation workspace and importing existing content.
+  </Card>
+  <Card title="Managing Projects" icon="folder" href="/docs/managing-projects">
+    Discover how to create, organize, and maintain documentation projects. Explore features for structuring content and managing permissions.
+  </Card>
+  <Card title="API Integration" icon="code" href="/docs/api-integration">
+    Integrate WIZIUM with your development workflow. Use our REST API to automate documentation tasks and connect with other tools.
+  </Card>
+</Columns>
+
+## Key Features
+
+You work with a robust platform designed for modern documentation needs. The system supports real-time collaboration, version control, and seamless integration with popular development tools.
+
+<Tabs>
+  <Tab title="Collaboration" icon="users">
+    Invite team members to collaborate on documentation projects in real-time. You assign roles and permissions to control access levels, ensuring secure and efficient teamwork.
+  </Tab>
+  <Tab title="Version Control" icon="git-branch">
+    Track changes to your documentation with built-in version control. You review edit history, revert to previous versions, and maintain audit trails for compliance purposes.
+  </Tab>
+  <Tab title="Integrations" icon="plug">
+    Connect WIZIUM with your existing tools. You import content from Git repositories, sync with project management platforms, and export documentation in multiple formats.
+  </Tab>
+</Tabs>
+
+## Getting Started
+
+You begin by creating your WIZIUM account and setting up your first documentation project. Follow these steps to establish your documentation workspace.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Create your WIZIUM account using your email address or through SSO integration with your organization's identity provider.
+  </Step>
+  <Step title="Create Project" icon="plus">
+    Set up your first documentation project. You define the project name, description, and initial team members.
+  </Step>
+  <Step title="Import Content" icon="upload">
+    Import existing documentation from various sources. You upload Markdown files, connect Git repositories, or migrate from other platforms.
+  </Step>
+  <Step title="Customize Settings" icon="settings">
+    Configure project settings to match your workflow. You set up custom templates, define access controls, and enable integrations.
+  </Step>
+</Steps>
+
+<Callout kind="info">
+  Pro tip: Start with a small pilot project to familiarize yourself with WIZIUM's features before scaling up to larger documentation initiatives.
+</Callout>
+
+## Use Cases
+
+You apply WIZIUM across various scenarios to improve documentation quality and team productivity.
+
+<ExpandableGroup>
+  <Expandable title="Product Documentation">
+    Create comprehensive product documentation including user guides, API references, and troubleshooting resources. You maintain up-to-date information that helps users succeed with your product.
+  </Expandable>
+  <Expandable title="Knowledge Base Management">
+    Build an internal knowledge base for your organization. You organize best practices, standard operating procedures, and training materials in a searchable, accessible format.
+  </Expandable>
+  <Expandable title="Developer Documentation">
+    Document APIs, SDKs, and development processes. You provide clear, actionable information that enables developers to integrate with your services effectively.
+  </Expandable>
+</ExpandableGroup>
+
+## Support and Resources
+
+You access comprehensive support resources to maximize your WIZIUM experience. The platform includes detailed guides, video tutorials, and a responsive support team.
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+const wizium = require('wizium-sdk');
+
+wizium.authenticate({
+  apiKey: 'your-api-key',
+  projectId: 'your-project-id'
+});
+
+wizium.projects.list().then(projects => {
+  console.log('Your projects:', projects);
+});
+```
+  ```python
+import wizium_sdk
+
+client = wizium_sdk.Client(
+    api_key='your-api-key',
+    project_id='your-project-id'
+)
+
+projects = client.projects.list()
+print(f"Your projects: {projects}")
+```
+</CodeGroup>
+
+<Callout kind="tip">
+  Check the API Reference section for complete endpoint documentation and code examples in additional languages.
+</Callout>

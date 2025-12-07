@@ -1,0 +1,202 @@
+---
+title: API Integration
+description: Integrate WIZIUM with your development workflow using REST API and SDKs
+---
+
+## API Overview
+
+You integrate WIZIUM into your development workflow using a comprehensive REST API. The API provides programmatic access to all platform features.
+
+<Columns cols={3}>
+  <Card title="Authentication" icon="key" href="#authentication">
+    Secure your API requests with API keys and OAuth tokens.
+  </Card>
+  <Card title="Projects API" icon="folder" href="#projects-api">
+    Manage documentation projects programmatically.
+  </Card>
+  <Card title="Content API" icon="file-text" href="#content-api">
+    Create and modify documentation content via API.
+  </Card>
+</Columns>
+
+## Authentication
+
+You authenticate API requests using API keys or OAuth tokens. The authentication system ensures secure access to your resources.
+
+<Steps>
+  <Step title="Generate API Key" icon="key">
+    Access your account settings and create an API key. You copy the key for use in requests.
+  </Step>
+  <Step title="Include in Headers" icon="header">
+    Add the Authorization header to all API requests. You use Bearer token format.
+  </Step>
+  <Step title="Handle Tokens" icon="refresh-cw">
+    Rotate API keys regularly and revoke compromised tokens. You monitor usage.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="cURL,JavaScript,Python">
+  ```bash
+# Get API key from dashboard
+curl -X GET https://api.wizium.com/projects \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+```
+  ```javascript
+const wizium = require('wizium-sdk');
+
+wizium.authenticate({
+  apiKey: 'your-api-key'
+});
+
+// API calls now authenticated
+wizium.projects.list();
+```
+  ```python
+import wizium_sdk
+
+client = wizium_sdk.Client(api_key='your-api-key')
+
+# Authenticated requests
+projects = client.projects.list()
+```
+</CodeGroup>
+
+<Callout kind="danger">
+  Never expose API keys in client-side code or public repositories. Use environment variables for secure storage.
+</Callout>
+
+## Working with Projects
+
+You manage documentation projects through the Projects API. Create, update, and delete projects programmatically.
+
+<Tabs>
+  <Tab title="Create Project" icon="plus">
+    Use POST requests to create new projects. You specify name, description, and settings.
+  </Tab>
+  <Tab title="List Projects" icon="list">
+    Retrieve all projects you have access to. Filter by ownership or team membership.
+  </Tab>
+  <Tab title="Update Settings" icon="settings">
+    Modify project configuration. You change visibility, team access, and integrations.
+  </Tab>
+</Tabs>
+
+<ExpandableGroup>
+  <Expandable title="Project Creation Example">
+    You create projects with specific configurations. The API validates input and returns project details.
+    
+    ```javascript
+    const newProject = await wizium.projects.create({
+      name: 'API Documentation',
+      description: 'REST API reference and guides',
+      visibility: 'public',
+      team: ['user1@example.com', 'user2@example.com']
+    });
+    ```
+  </Expandable>
+  <Expandable title="Bulk Operations">
+    Perform operations on multiple projects simultaneously. You use batch endpoints for efficiency.
+  </Expandable>
+</ExpandableGroup>
+
+## Content Management
+
+You manipulate documentation content using the Content API. Create pages, update content, and manage versions.
+
+<Steps>
+  <Step title="Create Pages" icon="file-plus">
+    Add new documentation pages to projects. You specify content, metadata, and folder location.
+  </Step>
+  <Step title="Update Content" icon="edit">
+    Modify existing page content. You preserve version history and track changes.
+  </Step>
+  <Step title="Manage Assets" icon="image">
+    Upload and link images and files. You organize media within projects.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+// Create a documentation page
+const page = await wizium.pages.create({
+  projectId: 'project-123',
+  title: 'Getting Started',
+  content: '# Welcome\n\nThis guide helps you get started.',
+  folderId: 'folder-456',
+  tags: ['tutorial', 'beginner']
+});
+
+console.log('Page created:', page.id);
+```
+  ```python
+# Update page content
+client.pages.update(
+    page_id='page-789',
+    content='# Updated Content\n\nNew information here.',
+    message='Updated getting started guide'
+)
+```
+</CodeGroup>
+
+<Callout kind="info">
+  Use meaningful commit messages when updating content to maintain clear version history.
+</Callout>
+
+## Webhooks and Automation
+
+You set up webhooks to receive real-time notifications about project changes. Automate workflows based on documentation events.
+
+<Columns cols={2}>
+  <Card title="Event Types" icon="bell" href="#event-types">
+    Receive notifications for page updates, project changes, and team modifications.
+  </Card>
+  <Card title="Webhook Configuration" icon="settings" href="#webhook-config">
+    Configure webhook URLs and authentication. You define which events trigger notifications.
+  </Card>
+</Columns>
+
+<Expandable title="Webhook Payload Example">
+  Webhooks send JSON payloads with event details. You process these in your applications.
+  
+  ```json
+  {
+    "event": "page.updated",
+    "project": {
+      "id": "project-123",
+      "name": "API Docs"
+    },
+    "page": {
+      "id": "page-456",
+      "title": "Authentication",
+      "updatedBy": "user@example.com"
+    },
+    "timestamp": "2024-01-15T10:30:00Z"
+  }
+  ```
+</Expandable>
+
+## SDKs and Libraries
+
+You use official SDKs to simplify integration. Pre-built libraries handle authentication and error management.
+
+<Tabs>
+  <Tab title="JavaScript SDK" icon="code">
+    Use the Node.js SDK for server-side integrations. Includes TypeScript definitions.
+  </Tab>
+  <Tab title="Python SDK" icon="code">
+    Python library with async support. Ideal for data processing workflows.
+  </Tab>
+  <Tab title="REST API" icon="globe">
+    Direct REST API access for custom implementations. Comprehensive endpoint coverage.
+  </Tab>
+</Tabs>
+
+<ExpandableGroup>
+  <Expandable title="Error Handling">
+    SDKs provide consistent error handling. You catch exceptions and implement retry logic.
+  </Expandable>
+  <Expandable title="Rate Limiting">
+    Respect API rate limits. SDKs include automatic retry and backoff mechanisms.
+  </Expandable>
+</ExpandableGroup>

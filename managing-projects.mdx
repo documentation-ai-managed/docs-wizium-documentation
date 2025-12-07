@@ -1,0 +1,161 @@
+---
+title: Managing Projects
+description: Learn how to create, organize, and maintain documentation projects in WIZIUM
+---
+
+## Project Structure Overview
+
+You organize your documentation into logical projects that reflect your team's workflow. Each project contains pages, folders, and resources that you structure according to your needs.
+
+<Columns cols={3}>
+  <Card title="Project Settings" icon="settings" href="#project-settings">
+    Configure project-level options including visibility, team access, and integration settings.
+  </Card>
+  <Card title="Content Organization" icon="folder" href="#content-org">
+    Create folders and subfolders to organize documentation pages logically.
+  </Card>
+  <Card title="Team Collaboration" icon="users" href="#team-collab">
+    Manage team members, assign roles, and control access permissions.
+  </Card>
+</Columns>
+
+## Creating Projects
+
+You start new projects to house different documentation sets. The creation process allows you to define scope and initial settings.
+
+<Steps>
+  <Step title="Access Project Dashboard" icon="layout-dashboard">
+    Click the "New Project" button in your WIZIUM dashboard. You choose between blank projects or templates.
+  </Step>
+  <Step title="Define Project Details" icon="edit">
+    Enter the project name, description, and category. You set visibility to public or private.
+  </Step>
+  <Step title="Configure Settings" icon="settings">
+    Choose default language, enable features, and set up integrations. You define team member roles.
+  </Step>
+  <Step title="Add Initial Content" icon="plus">
+    Upload files, import from repositories, or create pages. You establish the project foundation.
+  </Step>
+</Steps>
+
+<Callout kind="info">
+  Use descriptive project names and descriptions to help team members understand the project's purpose and scope.
+</Callout>
+
+## Organizing Content
+
+You structure your documentation content using folders and pages. The hierarchical organization makes content easy to find and navigate.
+
+<Tabs>
+  <Tab title="Folders" icon="folder">
+    Create nested folder structures to categorize content. You move pages between folders and set folder permissions.
+  </Tab>
+  <Tab title="Pages" icon="file-text">
+    Write and edit individual documentation pages. You use Markdown formatting and embed media.
+  </Tab>
+  <Tab title="Templates" icon="layout">
+    Define reusable page templates with standard sections. You ensure consistency across projects.
+  </Tab>
+</Tabs>
+
+<CodeGroup tabs="Markdown,API">
+  ```markdown
+# Project Overview
+
+This project contains documentation for our API platform.
+
+## Getting Started
+
+1. Sign up for an account
+2. Generate API keys
+3. Make your first request
+
+## API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/users` | GET | List users |
+| `/users` | POST | Create user |
+```
+  ```javascript
+const wizium = require('wizium-sdk');
+
+// Create a new page
+wizium.pages.create({
+  projectId: 'project-123',
+  title: 'API Overview',
+  content: '# Welcome to our API\n\nThis is the main documentation page.',
+  folderId: 'folder-456'
+});
+```
+</CodeGroup>
+
+## Managing Team Access
+
+You control who can access and modify your projects. The role-based permission system ensures appropriate access levels.
+
+<ExpandableGroup>
+  <Expandable title="User Roles and Permissions">
+    Assign roles like Owner, Editor, and Viewer. Owners manage settings, Editors create content, and Viewers read documentation.
+  </Expandable>
+  <Expandable title="Inviting Members">
+    Send email invitations to team members. You specify roles during invitation and manage pending requests.
+  </Expandable>
+  <Expandable title="Access Control">
+    Set project visibility and folder-level permissions. You restrict sensitive content to authorized users.
+  </Expandable>
+</ExpandableGroup>
+
+<Steps>
+  <Step title="Invite Users" icon="user-plus">
+    Enter email addresses and select roles. WIZIUM sends invitations automatically.
+  </Step>
+  <Step title="Manage Permissions" icon="shield">
+    Adjust individual user permissions. You promote or demote roles as needed.
+  </Step>
+  <Step title="Monitor Activity" icon="eye">
+    Review project activity logs. You track changes and identify active contributors.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Regularly review team permissions to ensure access levels align with current team structure and responsibilities.
+</Callout>
+
+## Version Control and History
+
+You track changes to your documentation with comprehensive version control. The system maintains a complete audit trail.
+
+<Columns cols={2}>
+  <Card title="Change History" icon="history" href="#change-history">
+    View detailed logs of all modifications. You see who made changes and when.
+  </Card>
+  <Card title="Revisions" icon="git-branch" href="#revisions">
+    Compare versions and revert changes. You maintain documentation accuracy.
+  </Card>
+</Columns>
+
+<Expandable title="Working with Versions">
+  You access version history from any page. Click the history icon to see previous versions and compare changes.
+  
+  ```bash
+  # View page history via API
+  wizium pages history PAGE_ID --format json
+  ```
+</Expandable>
+
+## Project Analytics
+
+You gain insights into documentation usage and effectiveness. Analytics help you understand reader engagement and content performance.
+
+<Tabs>
+  <Tab title="Page Views" icon="eye">
+    Track which pages receive the most attention. You identify popular content and knowledge gaps.
+  </Tab>
+  <Tab title="Search Analytics" icon="search">
+    Monitor search terms and success rates. You improve content discoverability.
+  </Tab>
+  <Tab title="User Engagement" icon="users">
+    Analyze how users interact with documentation. You measure time spent and completion rates.
+  </Tab>
+</Tabs>

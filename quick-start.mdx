@@ -2,27 +2,29 @@
 title: Quick Start
 description: Get started with WIZIUM Documentation in under 10 minutes
 ---
-
 ## Setting Up Your Account
 
 You create your WIZIUM account quickly and securely. The registration process takes just a few steps and gives you immediate access to the platform.
 
 <Steps>
-  <Step title="Visit WIZIUM" icon="globe">
+  <Step title="Visit WIZIUM" icon="globe" title-type="p">
     Navigate to the WIZIUM website and click the "Sign Up" button. You choose between email registration or SSO with your organization's provider.
   </Step>
-  <Step title="Enter Details" icon="user">
+
+  <Step title="Enter Details" icon="user" title-type="p">
     Provide your email address and create a secure password. If using SSO, you authenticate through your company's identity system.
   </Step>
-  <Step title="Verify Email" icon="mail">
+
+  <Step title="Verify Email" icon="mail" title-type="p">
     Check your email for a verification link. You click the link to activate your account and complete the setup process.
   </Step>
-  <Step title="Customize Profile" icon="settings">
+
+  <Step title="Customize Profile" icon="settings" title-type="p">
     Add your name, profile picture, and team information. You set up notification preferences and security settings.
   </Step>
 </Steps>
 
-<Callout kind="info">
+<Callout kind="info" collapsed="false">
   Use a strong, unique password and enable two-factor authentication for enhanced security.
 </Callout>
 
@@ -34,14 +36,15 @@ You establish your initial documentation project to begin organizing content. Th
   <Tab title="Web Interface" icon="monitor">
     Use the web dashboard to create projects visually. You access intuitive forms and drag-and-drop functionality for a smooth experience.
   </Tab>
+
   <Tab title="API" icon="code">
     Automate project creation with the WIZIUM API. You write scripts to set up multiple projects programmatically.
   </Tab>
 </Tabs>
 
-<CodeGroup tabs="cURL,JavaScript">
+<CodeGroup show-lines="true" tabs={[]}>
   ```bash
-curl -X POST https://api.wizium.com/projects \
+  curl -X POST https://api.wizium.com/projects \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -49,52 +52,54 @@ curl -X POST https://api.wizium.com/projects \
     "description": "Documentation for my product",
     "visibility": "private"
   }'
-```
-  ```javascript
-const wizium = require('wizium-sdk');
+  ```
 
-async function createProject() {
+  ```javascript
+  const wizium = require('wizium-sdk');
+
+  async function createProject() {
   const project = await wizium.projects.create({
     name: 'My First Project',
     description: 'Documentation for my product',
     visibility: 'private'
   });
-  
-  console.log('Project created:', project.id);
-}
 
-createProject();
-```
+  console.log('Project created:', project.id);
+  }
+
+  createProject();
+  ```
 </CodeGroup>
 
 ## Importing Existing Content
 
 You migrate your current documentation to WIZIUM seamlessly. The platform supports multiple import methods to preserve your existing content structure.
 
-<Columns cols={2}>
-  <Card title="Git Repository" icon="git-branch" href="#git-import">
+<Columns cols="2">
+  <Card title="Git Repository" href="#git-import" icon="git-branch" horizontal="false">
     Connect your Git repository to import Markdown files automatically. WIZIUM maintains file structure and version history.
   </Card>
-  <Card title="File Upload" icon="upload" href="#file-upload">
+
+  <Card title="File Upload" href="#file-upload" icon="upload" horizontal="false">
     Upload individual files or ZIP archives. You organize content during the import process.
   </Card>
 </Columns>
 
-<Expandable title="Git Repository Import Details">
+<Expandable title="Git Repository Import Details" default-open="false">
   You connect your Git repository by providing the repository URL and authentication credentials. WIZIUM pulls all Markdown files and preserves the directory structure.
-  
+
   ```bash
-git clone https://github.com/your-org/docs.git
-cd docs
-wizium import --project-id YOUR_PROJECT_ID --source .
+  git clone https://github.com/your-org/docs.git
+  cd docs
+  wizium import --project-id YOUR_PROJECT_ID --source .
   ```
 </Expandable>
 
-<Expandable title="File Upload Process">
+<Expandable title="File Upload Process" default-open="false">
   You select files from your local system and upload them to WIZIUM. The platform automatically detects file types and converts content to the appropriate format.
 </Expandable>
 
-<Callout kind="tip">
+<Callout kind="tip" collapsed="false">
   Start with a small subset of documentation to test the import process before migrating your entire knowledge base.
 </Callout>
 
@@ -103,13 +108,15 @@ wizium import --project-id YOUR_PROJECT_ID --source .
 You navigate the WIZIUM interface efficiently using the sidebar and search functionality. The intuitive design helps you find content quickly.
 
 <Steps>
-  <Step title="Use Search" icon="search">
+  <Step title="Use Search" icon="search" title-type="p">
     Type keywords in the search bar to find specific documentation. WIZIUM provides instant results with highlighting.
   </Step>
-  <Step title="Browse Projects" icon="folder">
+
+  <Step title="Browse Projects" icon="folder" title-type="p">
     Click on project names in the sidebar to access different documentation sets. You expand folders to navigate content hierarchy.
   </Step>
-  <Step title="Access Settings" icon="settings">
+
+  <Step title="Access Settings" icon="settings" title-type="p">
     Click your profile icon to access account settings and project configurations. You manage team members and permissions here.
   </Step>
 </Steps>
@@ -119,13 +126,16 @@ You navigate the WIZIUM interface efficiently using the sidebar and search funct
 You continue building your documentation foundation by exploring advanced features and inviting team members.
 
 <ExpandableGroup>
-  <Expandable title="Invite Team Members">
+  <Expandable title="Invite Team Members" default-open="false">
     Add collaborators to your project by sending invitations. You assign appropriate roles and permissions to ensure proper access control.
   </Expandable>
-  <Expandable title="Set Up Templates">
+
+  <Expandable title="Set Up Templates" default-open="false">
     Create custom templates for consistent documentation. You define sections and formatting standards across your projects.
   </Expandable>
-  <Expandable title="Configure Integrations">
+
+  <Expandable title="Configure Integrations" default-open="false">
     Connect WIZIUM with your development tools. You enable automatic syncing and notification systems.
   </Expandable>
 </ExpandableGroup>
+
